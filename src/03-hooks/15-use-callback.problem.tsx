@@ -2,12 +2,19 @@ import { useCallback } from "react";
 import { Equal, Expect } from "../helpers/type-utils";
 
 export const Buttons = (props: { id: string }) => {
-  const onClick = useCallback<string>(
-    (buttonName) => {
-      console.log(props.id, buttonName);
-    },
-    [props.id],
-  );
+  // This was my first solution, which makes the error go away, but I prefer the second solution
+  // const onClick = useCallback<(buttonName: string) => void>(
+  //   (buttonName) => {
+  //     console.log(props.id, buttonName);
+  //   },
+  //   [props.id],
+  // );
+    const onClick = useCallback(
+        (buttonName: string) => {
+            console.log(props.id, buttonName);
+        },
+        [props.id],
+    );
 
   type test = Expect<Equal<typeof onClick, (buttonName: string) => void>>;
 

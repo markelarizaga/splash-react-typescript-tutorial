@@ -1,7 +1,23 @@
 import { useReducer } from "react";
 import { Equal, Expect } from "../helpers/type-utils";
 
-const reducer = (state: unknown, action: unknown) => {
+interface AddAction {
+  type: "add";
+  add: number;
+}
+
+interface SubtractAction {
+  type: "subtract";
+  subtract: number;
+}
+
+type ReducerAction = AddAction | SubtractAction;
+
+interface ReducerState {
+  count: number;
+}
+
+const reducer = (state: ReducerState, action: ReducerAction) => {
   switch (action.type) {
     case "add":
       return { count: state.count + action.add };
