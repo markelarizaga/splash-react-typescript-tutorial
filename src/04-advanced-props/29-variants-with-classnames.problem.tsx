@@ -4,17 +4,10 @@ const classNamesMap = {
   success: "bg-green-500 text-white",
 };
 
+type ClassNames = typeof classNamesMap;
+
 type ButtonProps = {
-  /**
-   * This isn't ideal - we have to manually sync
-   * the type of variant with the object above.
-   *
-   * 1. How do we rearrange this code so that we don't
-   * have to manually sync the types?
-   *
-   * Hint: you'll need 'typeof' and 'keyof'.
-   */
-  variant: "primary" | "secondary" | "success";
+    variant: keyof ClassNames
 };
 
 export const Button = (props: ButtonProps) => {

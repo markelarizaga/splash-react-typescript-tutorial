@@ -10,12 +10,13 @@ import { ChangeEventHandler } from "react";
  *
  * 2. Find a way to fix the errors.
  */
+type AllOrNone<T> = T | {[K in keyof T]?: never};
+
 type InputProps = (
-  | {
+  AllOrNone<{
       value: string;
       onChange: ChangeEventHandler;
-    }
-  | {}
+    }>
 ) & {
   label: string;
 };
